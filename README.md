@@ -10,5 +10,5 @@ Bootstrap5
 ##### časový harmonogarm:
 od 1.srpna do 10.ledna
 
-####Srpen: 
+#### Srpen: 
 nalouskat dokumetaci JavaScriptu a sprovoznit provizorní backend
