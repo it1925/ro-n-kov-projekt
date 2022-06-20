@@ -3,7 +3,7 @@
 
 ##### technologie, které plánuji použít:
 Node.js
-strapi(headless cms)<sub>backedn</sub> *vzhledem k tomu že využiji tento styl backendu rozhodl jsem se zatím frontedovou technologii neuvádět*
+strapi(headless cms)(<sub>backedn</sub>) *vzhledem k tomu že využiji tento styl backendu rozhodl jsem se zatím frontedovou technologii neuvádět*
 
 Bootstrap5
 
