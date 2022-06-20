@@ -3,7 +3,7 @@
 
 ##### technologie, které plánuji použít:
 Node.js
-strapi(headless cms)
+strapi(headless cms)<sub>vzhledem k tomu že využiji tento styl backendu rozhodl jsem se zatím frontedovou technologii neuvádět</sub>
 Bootstrap5
 
 ##### časový harmonogarm:
