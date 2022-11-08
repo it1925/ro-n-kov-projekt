@@ -1,14 +1,13 @@
-# závěrečný projekt
-## Téma projektu: Aplikace Galerie schopná zobrazovat díla v nejrůznějších formátech
+    # závěrečný projekt  
+## Téma projektu: Aplikace Galerie schopná zobrazovat 3d modely
+### Backend
+Po experimentaci s frameworkem **django CMS** jsem se rohodl přesedlat na technologii se kterou momentálně pracuji více.
 
-##### technologie, které plánuji použít:
-Node.js
-strapi(headless cms)(<sub>backedn</sub>) *vzhledem k tomu že využiji tento styl backendu rozhodl jsem se zatím frontedovou technologii neuvádět*
+Backend projektu zamýšlím dělat ve **Flasku** pomocí **Flask-AppBuilder**.
+https://github.com/dpgaspar/Flask-AppBuilder
 
-Bootstrap5
+### Frontend
+Na zobrazování modelů hodlám použít JavaScript knihovnu **Three.js**.
 
-##### časový harmonogarm:
-od 1.srpna do 10.ledna
-
-#### Srpen: 
-nalouskat dokumetaci JavaScriptu a sprovoznit provizorní backend
+#### výsledný projekt
+Závěrem celého projektu by měla být stránka/webová aplikace, na které si uživatel bude moci založit účet a následně nahrávat a zobrazovat 3d modely.
