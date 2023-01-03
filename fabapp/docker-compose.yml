@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  node-frontend:
+    build:
+      context: ../node/
+    ports:
+      - 3000:3000
+  fab-backend:
+    build: 
+      context: ./
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:13.5-alpine
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "user"
+      POSTGRES_DB: "app"
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data/
+#  pg-admin:
+#    image: dpage/pgadmin4:6
+#    environment:
+#      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+#      - PGADMIN_DEFAULT_PASSWORD=admin
+#      - PGADMIN_LISTEN_PORT=5050
+#    ports:
+#      - "5050:5050"
+volumes:
+  db-data:

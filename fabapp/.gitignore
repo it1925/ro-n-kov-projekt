@@ -3,6 +3,8 @@ app.db
 ./tmp
 ./build/*
 .idea
+.env
 env
 venv
+/app/static/uploads
 *.sublime*

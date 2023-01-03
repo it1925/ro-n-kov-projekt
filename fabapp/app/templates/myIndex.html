@@ -1,0 +1,10 @@
+{% extends "appbuilder/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{_("3D Gallery")}}</h1>
+    <model-viewer  src="{{url_for('static',href='/api/v1/models')}}"  shadow-intensity="1"></model-viewer>
+  </div>
+</div>
+{% endblock %}
