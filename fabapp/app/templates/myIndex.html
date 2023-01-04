@@ -4,7 +4,12 @@
 <div class="jumbotron">
   <div class="container">
     <h1>{{_("3D Gallery")}}</h1>
-    <model-viewer  src="{{url_for('static',href='/api/v1/models')}}"  shadow-intensity="1"></model-viewer>
   </div>
+</div>
+<div class="row">{% for file in file_list %}
+  <div class="col-4">
+    <model-viewer  src="{{url_for('static',filename='/uploads/')}}{{ file }}"  shadow-intensity="1"></model-viewer>
+  </div>
+{% endfor %}
 </div>
 {% endblock %}

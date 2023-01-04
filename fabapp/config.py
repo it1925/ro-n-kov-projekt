@@ -1,6 +1,6 @@
 import os
 from flask import session
-from flask_appbuilder.security.manager import AUTH_OAUTH
+from flask_appbuilder.security.manager import AUTH_OAUTH, AUTH_DB
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -32,9 +32,9 @@ CSRF_ENABLED = True
 # AUTH_DB : Is for database (username/password()
 # AUTH_LDAP : Is for LDAP
 # AUTH_REMOTE_USER : Is for using REMOTE_USER from web server
-AUTH_TYPE = AUTH_OAUTH
+AUTH_TYPE = AUTH_DB
 
-OAUTH_PROVIDERS = [
+""" OAUTH_PROVIDERS = [
     {'name':'google', 'icon':'fa-google', 'token_key':'access_token',
         'remote_app': {
             'client_id':os.environ.get('GOOGLE_KEY'),
@@ -49,7 +49,7 @@ OAUTH_PROVIDERS = [
             'jwks_uri': 'https://www.googleapis.com/oauth2/v3/certs'
             },
     },
-]
+] """
 
 # Uncomment to setup Full admin role name
 AUTH_ROLE_ADMIN = 'Admin'
@@ -138,4 +138,4 @@ FILE_ALLOWED_EXTENSIONS = ("obj", "gltf", "jpeg", "jpg", "gif", "png")
 # APP_THEME = "united.css"
 # APP_THEME = "yeti.css"
 
-FAB_SECURITY_MANAGER_CLASS = "app.security.MySecurityManager"
+# FAB_SECURITY_MANAGER_CLASS = "app.security.MySecurityManager"

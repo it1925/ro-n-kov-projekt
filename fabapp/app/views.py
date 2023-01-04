@@ -1,7 +1,10 @@
+import os
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.views import ModelView, CompactCRUDMixin
+from flask_appbuilder import BaseView, expose
+from flask import render_template
 from app.models import ModelCategory, ModelFiles
-from app import appbuilder, db
+from app import appbuilder, db, app
 
 
 class ProjectFilesModelView(ModelView):
@@ -35,9 +38,17 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
     
+    
+class HomePage(BaseView):
+    route_base = "/test"
+    
+    @expose("/")
+    def run(self):
+        return self.render_template("myIndex.html", file_list=os.listdir(app.config["UPLOAD_FOLDER"]))
 
 db.create_all()
 appbuilder.add_view(
     ProjectModelView, "List ModelCategory", icon="fa-table", category="ModelCategory"
 )
 appbuilder.add_view(ProjectFilesModelView, "List ModelFiles", category="ModelFiles")
+appbuilder.add_view_no_menu(HomePage())

@@ -15,9 +15,9 @@ app = Flask(__name__)
 """ CORS(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}) """
 
-@app.route('/homepage')
+@app.route('/')
 def hello():
-    return redirect("http://localhost:3000", code=302)
+    return redirect("http://localhost:5000/test", code=302)
 
 
 app.config.from_object("config")
