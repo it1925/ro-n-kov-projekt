@@ -3,23 +3,26 @@ from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder.views import ModelView, CompactCRUDMixin
 from flask_appbuilder import BaseView, expose
 from flask import render_template
+from flask import request
 from app.models import ModelCategory, ModelFiles
 from app import appbuilder, db, app
 
 
-class ProjectFilesModelView(ModelView):
-    datamodel = SQLAInterface(ModelFiles)
-
+class FilesView(CompactCRUDMixin, ModelView):
+    datamodel = SQLAInterface(ModelFiles, db.session)
+    """ category_name = db.session.query(ModelCategory.name).all() """
+    
     label_columns = {"file_name": "File Name", "download": "Download"}
     add_columns = ["file", "description", "model_category"]
     edit_columns = ["file", "description", "model_category"]
-    list_columns = ["file_name", "download"]
-    show_columns = ["file_name", "download"]
+    list_columns = ["file_name", "model_category"]
+    show_columns = ["file_name", "model_category"]
 
 
-class ProjectModelView(CompactCRUDMixin, ModelView):
+class CategoryView(CompactCRUDMixin, ModelView):
     datamodel = SQLAInterface(ModelCategory)
-    related_views = [ProjectFilesModelView]
+    related_views = [FilesView]
+    
 
     show_template = "appbuilder/general/model/show_cascade.html"
     edit_template = "appbuilder/general/model/edit_cascade.html"
@@ -38,17 +41,23 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
     
-    
+
 class HomePage(BaseView):
-    route_base = "/test"
+    route_base = "/homepage"
+    
     
     @expose("/")
     def run(self):
-        return self.render_template("myIndex.html", file_list=os.listdir(app.config["UPLOAD_FOLDER"]))
+        return self.render_template("myIndex.html", response = db.session.query(ModelFiles).all())
+    
+    @expose("/<string:param1>")
+    def param1(self, param1):
+        return self.render_template("modelview.html", param1 = param1, response = db.session.query(ModelFiles).filter_by(file = (param1)).first())
+        
 
 db.create_all()
 appbuilder.add_view(
-    ProjectModelView, "List ModelCategory", icon="fa-table", category="ModelCategory"
+    CategoryView, "List ModelCategory", icon="fa-table", category="Categories"
 )
-appbuilder.add_view(ProjectFilesModelView, "List ModelFiles", category="ModelFiles")
+appbuilder.add_view(FilesView, "List ModelFiles")
 appbuilder.add_view_no_menu(HomePage())

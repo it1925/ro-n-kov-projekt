@@ -1,8 +1,10 @@
 import logging
+import requests
 from app.index import MyIndexView
-from flask import Flask, redirect, request
+from flask import Flask, redirect
 from flask_cors import CORS
 from flask_appbuilder import AppBuilder, SQLA
+from pprint import pprint
 
 """
  Logging configuration
@@ -17,8 +19,7 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}}) """
 
 @app.route('/')
 def hello():
-    return redirect("http://localhost:5000/test", code=302)
-
+    return redirect("http://localhost:5000/homepage", code=302)
 
 app.config.from_object("config")
 db = SQLA(app)

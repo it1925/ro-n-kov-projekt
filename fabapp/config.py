@@ -10,7 +10,7 @@ SECRET_KEY = "\2\1thisismyscretkey\1\2\e\y\y\h"
 # The SQLAlchemy connection string.
 SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "app.db")
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:user@postgres:5432/app'
+# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:user@172.26.0.1:5432/app'
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
@@ -29,12 +29,12 @@ CSRF_ENABLED = True
 # ----------------------------------------------------
 # The authentication type
 # AUTH_OID : Is for OpenID
-# AUTH_DB : Is for database (username/password()
+# AUTH_DB : Is for database (username/password)
 # AUTH_LDAP : Is for LDAP
 # AUTH_REMOTE_USER : Is for using REMOTE_USER from web server
-AUTH_TYPE = AUTH_DB
+AUTH_TYPE = AUTH_OAUTH
 
-""" OAUTH_PROVIDERS = [
+OAUTH_PROVIDERS = [
     {'name':'google', 'icon':'fa-google', 'token_key':'access_token',
         'remote_app': {
             'client_id':os.environ.get('GOOGLE_KEY'),
@@ -49,7 +49,7 @@ AUTH_TYPE = AUTH_DB
             'jwks_uri': 'https://www.googleapis.com/oauth2/v3/certs'
             },
     },
-] """
+]
 
 # Uncomment to setup Full admin role name
 AUTH_ROLE_ADMIN = 'Admin'
@@ -61,13 +61,13 @@ AUTH_ROLE_PUBLIC = 'Public'
 AUTH_USER_REGISTRATION = True
 
 # The default user self registration role for all users
-AUTH_USER_REGISTRATION_ROLE = "Admin"
+AUTH_USER_REGISTRATION_ROLE = "User"
 
 # Self registration role based on user info
 # AUTH_USER_REGISTRATION_ROLE_JMESPATH = "contains(['alice@example.com', 'celine@example.com'], email) && 'Admin' || 'Public'"
 
 # Replace users database roles each login with those received from OAUTH/LDAP
-AUTH_ROLES_SYNC_AT_LOGIN = True
+AUTH_ROLES_SYNC_AT_LOGIN = False
 
 # A mapping from LDAP/OAUTH group names to FAB roles
 AUTH_ROLES_MAPPING = {
@@ -120,7 +120,7 @@ IMG_UPLOAD_FOLDER = basedir + "/app/static/uploads/"
 # The image upload url, when using models with images
 IMG_UPLOAD_URL = "/static/uploads/"
 # Setup image size default is (300, 200, True)
-FILE_ALLOWED_EXTENSIONS = ("obj", "gltf", "jpeg", "jpg", "gif", "png")
+FILE_ALLOWED_EXTENSIONS = ("glb", "gltf")
 # Theme configuration
 # these are located on static/appbuilder/css/themes
 # you can create your own and easily use them placing them on the same dir structure to override
@@ -137,5 +137,5 @@ FILE_ALLOWED_EXTENSIONS = ("obj", "gltf", "jpeg", "jpg", "gif", "png")
 # APP_THEME = "spacelab.css"
 # APP_THEME = "united.css"
 # APP_THEME = "yeti.css"
-
-# FAB_SECURITY_MANAGER_CLASS = "app.security.MySecurityManager"
+ 
+FAB_SECURITY_MANAGER_CLASS = "app.security.MySecurityManager"

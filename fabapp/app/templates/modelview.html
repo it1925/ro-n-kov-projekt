@@ -1,0 +1,22 @@
+{% extends "appbuilder/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="container">
+    <h1>{{_("3D Gallery")}}</h1>
+  </div>
+</div>
+
+<div class="col-xs-12 col-sm-6">
+    <h2></h2>
+    <model-viewer  src="{{url_for('static',filename='uploads/')}}{{ param1 }}"  shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
+</div>
+<div class="col-xs-12 col-sm-6">
+    <h2>File:</h2>
+    <p>{{ param1 }}</p>
+    <h2>Description:</h2>
+    <p>{{ response.description }}</p>
+    <h2>Category:</h2>
+    <p>{{ response.model_category }}</p>
+</div>
+{% endblock %}
