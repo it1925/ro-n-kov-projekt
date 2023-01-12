@@ -10,7 +10,7 @@ SECRET_KEY = "\2\1thisismyscretkey\1\2\e\y\y\h"
 # The SQLAlchemy connection string.
 SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "app.db")
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:user@172.26.0.1:5432/app'
+# SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://user:user@postgres:5432/app'
 
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
@@ -19,7 +19,7 @@ CSRF_ENABLED = True
 # GLOBALS FOR APP Builder
 # ------------------------------
 # Uncomment to setup Your App name
-# APP_NAME = "My App Name"
+APP_NAME = "3D gallery"
 
 # Uncomment to setup Setup an App icon
 # APP_ICON = "static/img/logo.jpg"
@@ -72,12 +72,13 @@ AUTH_ROLES_SYNC_AT_LOGIN = False
 # A mapping from LDAP/OAUTH group names to FAB roles
 AUTH_ROLES_MAPPING = {
     # For OAUTH
-    # "USER_GROUP_NAME": ["User"],
-    # "ADMIN_GROUP_NAME": ["Admin"],
+    # "USER_GROUP_NAME": ["Users"],
+    #"ADMIN_GROUP_NAME": ["Admin"],
     # For LDAP
     # "cn=User,ou=groups,dc=example,dc=com": ["User"],
     # "cn=Admin,ou=groups,dc=example,dc=com": ["Admin"],
 }
+
 
 FAB_API_SWAGGER_UI = True
 # When using LDAP Auth, setup the ldap server

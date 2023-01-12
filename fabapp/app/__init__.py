@@ -4,7 +4,7 @@ from app.index import MyIndexView
 from flask import Flask, redirect
 from flask_cors import CORS
 from flask_appbuilder import AppBuilder, SQLA
-from pprint import pprint
+
 
 """
  Logging configuration

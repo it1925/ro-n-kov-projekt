@@ -1,5 +1,6 @@
 from flask import Markup, url_for, session
 from flask_appbuilder.security.sqla.models import User
+from flask_appbuilder.models.decorators import renders
 from flask_appbuilder.models.mixins import AuditMixin, FileColumn, ImageColumn
 from sqlalchemy import Table, Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship, backref, query
@@ -20,7 +21,7 @@ class ModelCategory(AuditMixin, Model):
     def __repr__(self):
         return self.name
 
-class ModelFiles(Model):
+class ModelFiles(AuditMixin, Model):
     __tablename__ = "model_files"
     id = Column(Integer, primary_key=True)
     file = Column(FileColumn, nullable=False)
@@ -28,6 +29,11 @@ class ModelFiles(Model):
     category_id = Column(Integer, ForeignKey('model_category.id'))
     model_category = relationship(ModelCategory)
 
+    @renders('created_by')
+    def change_on(self):
+        return Markup('<b>'+ self.created_by +'</b>')
+        
+        
     def file_name(self):
         return (str(self.file))
     

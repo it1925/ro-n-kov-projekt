@@ -1,23 +1,27 @@
 import os
 from flask_appbuilder.models.sqla.interface import SQLAInterface
+from flask_appbuilder.models.sqla.filters import FilterEqualFunction
 from flask_appbuilder.views import ModelView, CompactCRUDMixin
 from flask_appbuilder import BaseView, expose
 from flask import render_template
-from flask import request
+from flask import request, g
 from app.models import ModelCategory, ModelFiles
 from app import appbuilder, db, app
 
 
+def get_user():
+    return g.user
+
 class FilesView(CompactCRUDMixin, ModelView):
     datamodel = SQLAInterface(ModelFiles, db.session)
-    """ category_name = db.session.query(ModelCategory.name).all() """
+    base_filters = [['created_by', FilterEqualFunction, get_user],]
     
     label_columns = {"file_name": "File Name", "download": "Download"}
     add_columns = ["file", "description", "model_category"]
     edit_columns = ["file", "description", "model_category"]
-    list_columns = ["file_name", "model_category"]
-    show_columns = ["file_name", "model_category"]
-
+    list_columns = ["file_name", "model_category", "created_by"]
+    show_columns = ["file_name", "model_category", "created_by"]
+    
 
 class CategoryView(CompactCRUDMixin, ModelView):
     datamodel = SQLAInterface(ModelCategory)
