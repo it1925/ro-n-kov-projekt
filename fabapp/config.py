@@ -22,7 +22,7 @@ CSRF_ENABLED = True
 APP_NAME = "3D gallery"
 
 # Uncomment to setup Setup an App icon
-# APP_ICON = "static/img/logo.jpg"
+APP_ICON = "static/img/logo.png"
 
 # ----------------------------------------------------
 # AUTHENTICATION CONFIG
@@ -116,7 +116,7 @@ LANGUAGES = {
 UPLOAD_FOLDER = basedir + "/app/static/uploads/"
 
 # The image upload folder, when using models with images
-IMG_UPLOAD_FOLDER = basedir + "/app/static/uploads/"
+IMG_UPLOAD_FOLDER = basedir + "/app/static/img/"
 
 # The image upload url, when using models with images
 IMG_UPLOAD_URL = "/static/uploads/"
@@ -128,7 +128,7 @@ FILE_ALLOWED_EXTENSIONS = ("glb", "gltf")
 # APP_THEME = "bootstrap-theme.css"  # default bootstrap
 # APP_THEME = "cerulean.css"
 # APP_THEME = "amelia.css"
-# APP_THEME = "cosmo.css"
+APP_THEME = "cosmo.css"
 # APP_THEME = "cyborg.css"
 # APP_THEME = "flatly.css"
 # APP_THEME = "journal.css"
